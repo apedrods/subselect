@@ -1,6 +1,6 @@
 Package: subselect
-Version: 0.15.7
-Date: 2025-01-09
+Version: 0.16.0
+Date: 2025-01-11
 Title: Selecting Variable Subsets
 Authors@R: c(person("Jorge" ,"Orestes Cerdeira", role="aut", email="jo.cerdeira@fct.unl.pt"), 
              person("Pedro", "Duarte Silva", role=c("aut","cre"), email="psilva@ucp.pt"), 
