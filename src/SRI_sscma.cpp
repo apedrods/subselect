@@ -29,7 +29,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
    	Rf_protect(values = Rf_allocVector(REALSXP,nsol1*klength));
    	Rf_protect(bestsets = Rf_allocVector(INTSXP,kmax1*klength));
    	Rf_protect(bestvalues = Rf_allocVector(REALSXP,klength));
-/*
+
 	int retcode = extendedleaps::callsscma(
 		REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
 		REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
@@ -41,10 +41,9 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 		INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
 		false
 	);
-*/
-  int retcode = 0;
 
-  Rprintf("1 -- Got here"); 
+//  int retcode = 0;
+
 	if (retcode == 4) nomemory = true;
 	else nomemory = false;
 	if (retcode==0 || retcode==2)  optimal = true;
@@ -81,12 +80,8 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   	SET_VECTOR_ELT(ans, 4, Rf_ScalarInteger(optimal));
   	SET_VECTOR_ELT(ans, 5, Rf_ScalarInteger(nomemory));
 
-  	Rprintf("2 -- Got here"); 
-  	  
 	UNPROTECT(8);
   	
-  	Rprintf("3 -- Got here"); 
-  	  
   	return(ans);
 }
 
