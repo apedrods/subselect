@@ -78,9 +78,9 @@ int callsscma(double* S,double* S2,double* Si,double* Segval,double* Segvct,
  	bool heuristic;
 	sscmares srchres;
 	trnsfres tres;
-
+/*
  	resetvar();
- /*	
+ 	
 	ctime = clock();
 	maxtime = rtime = timelimit*CLOCKS_PER_SEC;
 	onlyf = onlyforward;				
