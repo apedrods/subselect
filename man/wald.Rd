@@ -113,6 +113,10 @@ crabs,family=binomial)
 ## weights = weights, start = start, etastart = etastart, 
 
 lHmat <- glmHmat(logrfit) 
+
+cat("logrfit =\n"); print(logrfit)
+cat("lHmat =\n"); print(lHmat)
+
 wald.coef(lHmat$mat,lHmat$H,c(1,6,7),tolsym=1E-06)
 ## [1] 2.286739
 ## Warning message:
