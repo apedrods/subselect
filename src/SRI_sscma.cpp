@@ -47,7 +47,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	  REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
 	  REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
     INTEGER(exclude),INTEGER(include),INTEGER(pcindices),
-    INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets))
+    INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets));
 	  
 //  int retcode = 0;
 
