@@ -29,7 +29,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
    	Rf_protect(values = Rf_allocVector(REALSXP,nsol1*klength));
    	Rf_protect(bestsets = Rf_allocVector(INTSXP,kmax1*klength));
    	Rf_protect(bestvalues = Rf_allocVector(REALSXP,klength));
-
+/*
 	int retcode = extendedleaps::callsscma(
 		REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
 		REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
@@ -41,7 +41,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 		INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
 		false
 	);
-
+*/
 	if (retcode == 4) nomemory = true;
 	else nomemory = false;
 	if (retcode==0 || retcode==2)  optimal = true;
@@ -78,16 +78,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   	SET_VECTOR_ELT(ans, 4, Rf_ScalarInteger(optimal));
   	SET_VECTOR_ELT(ans, 5, Rf_ScalarInteger(nomemory));
 
- 	Rf_protect(ans_names = NEW_CHARACTER(6));
-  	SET_STRING_ELT(ans_names, 0, mkChar("subsets"));
-  	SET_STRING_ELT(ans_names, 1, mkChar("values"));
-  	SET_STRING_ELT(ans_names, 2, mkChar("bestvalues"));
-  	SET_STRING_ELT(ans_names, 3, mkChar("bestsets"));
-  	SET_STRING_ELT(ans_names, 4, mkChar("found"));
-  	SET_STRING_ELT(ans_names, 5, mkChar("nomemory"));
-  	Rf_setAttrib(ans, R_NamesSymbol, ans_names);
-
-	UNPROTECT(9);
+	UNPROTECT(8);
   	return(ans);
 }
 
