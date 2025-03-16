@@ -48,7 +48,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	int retcode = extendedleaps::callsscma(
 	  REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
 	  REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
-//	  REAL(wilksval)[0],
+	  wilksval1,
 //                 *(REAL(bartpival)),*(REAL(lawhotval)),*(REAL(ccr12val)),*(INTEGER(r)),
 	  kmin1,kmax1,nsol1,
     INTEGER(exclude),INTEGER(include),INTEGER(pcindices),
