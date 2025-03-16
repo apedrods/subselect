@@ -42,6 +42,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 		false
 	);
 */
+  int retcode = 0;
 
   Rprintf("1 -- Got here"); 
 	if (retcode == 4) nomemory = true;
