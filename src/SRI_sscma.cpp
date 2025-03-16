@@ -21,6 +21,8 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	int kmin1 = INTEGER(kmin)[0]; 
 	int klength = kmax1 - kmin1 + 1;
 	int checkcolinearity = INTEGER(onlyforward)[0];  
+	
+	double wilksval1 = REAL(wilksval)[0];
 
 	if (!checkcolinearity) ErrMReals::errmonitreal<double>::dropec = true;   
 	else ErrMReals::errmonitreal<double>::dropec = false;   
