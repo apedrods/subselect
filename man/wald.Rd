@@ -114,9 +114,6 @@ crabs,family=binomial)
 
 lHmat <- glmHmat(logrfit) 
 
-cat("logrfit =\n"); print(logrfit)
-cat("lHmat =\n"); print(lHmat)
-
 wald.coef(lHmat$mat,lHmat$H,c(1,6,7),tolsym=1E-06)
 ## [1] 2.286739
 ## Warning message:
@@ -163,8 +160,10 @@ crabs,family=binomial)
 ## fitted probabilities numerically 0 or 1 occurred in: glm.fit(x = X, y = Y, 
 ## weights = weights, start = start, etastart = etastart)
 
+
 lHmat <- glmHmat(logrfit) 
-wald.coef(lHmat$mat,H=lHmat$H,probresults$subsets,tolsym=1e-06)
+
+#wald.coef(lHmat$mat,H=lHmat$H,probresults$subsets,tolsym=1e-06)  ## Turned off while testing eleaps, Uncomment when finished!!
 ##             Card.3
 ## Solution 1 2.286739
 ## Solution 2 2.595165
