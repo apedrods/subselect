@@ -42,6 +42,8 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 		false
 	);
 */
+
+  Rprintf("1 -- Got here"); 
 	if (retcode == 4) nomemory = true;
 	else nomemory = false;
 	if (retcode==0 || retcode==2)  optimal = true;
@@ -78,7 +80,12 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   	SET_VECTOR_ELT(ans, 4, Rf_ScalarInteger(optimal));
   	SET_VECTOR_ELT(ans, 5, Rf_ScalarInteger(nomemory));
 
+  	Rprintf("2 -- Got here"); 
+  	  
 	UNPROTECT(8);
+  	
+  	Rprintf("3 -- Got here"); 
+  	  
   	return(ans);
 }
 

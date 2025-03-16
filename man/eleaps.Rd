@@ -332,42 +332,8 @@ data(swiss)
 data(swiss)
 eleaps(cor(swiss),2,3,criterion="gcd",pcindices=1:3,nsol=3)
 
-##$subsets
-##, , Card.2
-##
-##           Var.1 Var.2 Var.3
-##Solution 1     4     5     0
-##Solution 2     5     6     0
-##Solution 3     4     6     0
-##
-##, , Card.3
-##
-##           Var.1 Var.2 Var.3
-##Solution 1     4     5     6
-##Solution 2     3     5     6
-##Solution 3     2     5     6
-##
-##
-##$values
-##              card.2    card.3
-##Solution 1 0.7831827 0.9253684
-##Solution 2 0.7475630 0.8459302
-##Solution 3 0.7383665 0.8243032
-##
-##$bestvalues
-##   Card.2    Card.3 
-##0.7831827 0.9253684 
-##
-##$bestsets
-##       Var.1 Var.2 Var.3
-##Card.2     4     5     0
-##Card.3     4     5     6
-##
-##$call
-##eleaps(cor(swiss), 2, 3, criterion = "gcd", pcindices = 1:3, nsol = 3)
 
 
-## --------------------------------------------------------------------
 
 ##
 ## 4) An example of subset selection in the context of Multiple Linear
