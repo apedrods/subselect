@@ -74,11 +74,13 @@ int callsscma(double* S,double* S2,double* Si,double* Segval,double* Segvct,
 	  double ntol,bool onlyforward,int* subs,double* subsv,double* bestsv,int* bests,
 	  bool printmsg=true)		
 {
+  
  	bool heuristic;
 	sscmares srchres;
 	trnsfres tres;
 
  	resetvar();
+ /*	
 	ctime = clock();
 	maxtime = rtime = timelimit*CLOCKS_PER_SEC;
 	onlyf = onlyforward;				
@@ -124,7 +126,8 @@ int callsscma(double* S,double* S2,double* Si,double* Segval,double* Segvct,
 		msg(memmsg);
 		return 4;
 	}
-/*	
+*/
+ /*
 	if (fulldata) {													
 		if (log(timelimit) < -100+5*p) heuristic = true;
 		else heuristic = false;
@@ -136,6 +139,7 @@ int callsscma(double* S,double* S2,double* Si,double* Segval,double* Segvct,
 		return 4;
 	}
 */ 
+/* 
 	fillres(mindim,ndim,nsol,bests,subs,bestsv,subsv);							
 	if (srchres==limsrchbest &&printmsg) {												
 		char timelascstr[10];											
@@ -150,7 +154,7 @@ int callsscma(double* S,double* S2,double* Si,double* Segval,double* Segvct,
 	if (srchres==optimal && numericalprob) return 2;
 	if (srchres==limsrchbest && numericalprob) return 3;
 	if (srchres==optimal && !numericalprob) return 0;
-
+*/
 	return 0;  // Too avoid warnings (never reached!!!)
 }
 
