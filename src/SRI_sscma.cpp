@@ -29,19 +29,26 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
    	Rf_protect(values = Rf_allocVector(REALSXP,nsol1*klength));
    	Rf_protect(bestsets = Rf_allocVector(INTSXP,kmax1*klength));
    	Rf_protect(bestvalues = Rf_allocVector(REALSXP,klength));
-
+/*
 	int retcode = extendedleaps::callsscma(
 		REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
 		REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
 		REAL(wilksval)[0],REAL(bartpival)[0],REAL(lawhotval)[0],REAL(ccr12val)[0],
 		INTEGER(r)[0],kmin1,kmax1,nsol1,
 		INTEGER(exclude),INTEGER(include),INTEGER(nexclude)[0],INTEGER(ninclude)[0],
-/*		CHAR(STRING_ELT(criterion,0)), */ INTEGER(fixed)[0],INTEGER(pcindices),INTEGER(nbindices)[0],
+    CHAR(STRING_ELT(criterion,0)), INTEGER(fixed)[0],INTEGER(pcindices),INTEGER(nbindices)[0],
 		dim1,REAL(timelimit)[0],REAL(maxaperr)[0],checkcolinearity,
 		INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
 		false
 	);
-
+*/
+	
+	int retcode = extendedleaps::callsscma(
+	  REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
+	  REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
+    INTEGER(exclude),INTEGER(include),INTEGER(pcindices),
+    INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets))
+	  
 //  int retcode = 0;
 
 	if (retcode == 4) nomemory = true;
