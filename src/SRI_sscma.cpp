@@ -53,7 +53,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	  kmin1,kmax1,nsol1,
     INTEGER(exclude),INTEGER(include),INTEGER(pcindices),
     INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets));
-*/	  
+	  
   int retcode = 0;
 
 	if (retcode == 4) nomemory = true;
