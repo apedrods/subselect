@@ -158,6 +158,8 @@ eleaps<-function(mat,kmin=length(include)+1,kmax=ncol(mat)-length(exclude)-1,nso
 	         as.logical(singularmat), 	    
            PACKAGE="subselect"   
         ) 
+	names(Cout) <- c("subsets","values","bestvalues","bestsets","found","nomemory")
+cat("Cout =\n") ; print(Cout)	
 	if (Cout$nomemory == TRUE) return(NULL)
 
 #######################################
