@@ -27,6 +27,7 @@ wald.coef<-function(mat,H,indices, tolval=10*.Machine$double.eps, tolsym=1000*.M
 
       wald.1d <- function(mat,H,indices){ waldallvar - tr(solve(mat[indices,indices],H[indices,indices])) }
       dimension<-length(dim(indices))
+cat("Wald.R -- dim(mat) =",dim(mat),"indices =",indices,"\ndimension =",dimension,"\n")      
       if (dimension > 1){
          wald.2d<-function(mat,H,subsets){
              apply(subsets,1,function(indices){
