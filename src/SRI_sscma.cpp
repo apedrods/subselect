@@ -43,7 +43,8 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	int dim1 = INTEGER_POINTER(dim)[0]; 
 */ 
 	int klength = kmax1 - kmin1 + 1;
-/*	
+	int checkcolinearity = INTEGER(onlyforward)[0];  
+	/*	
 	int checkcolinearity = INTEGER_POINTER(onlyforward)[0];  
 */	
   Rf_protect(wilksval = AS_NUMERIC(wilksval));
@@ -91,9 +92,10 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
     fixed1,INTEGER(pcindices),nbindices1,
     dim1,timelimit1,maxaperr1,checkcolinearity,
 */	 
-    INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
+//    INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
 //    false);
-	  
+   INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets))
+
 //  int retcode = 0;
 
 	if (retcode == 4) nomemory = true;
