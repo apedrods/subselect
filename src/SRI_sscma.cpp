@@ -47,7 +47,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	/*	
 	int checkcolinearity = INTEGER_POINTER(onlyforward)[0];  
 */	
-//  Rf_protect(wilksval = AS_NUMERIC(wilksval));
+  Rf_protect(wilksval = AS_NUMERIC(wilksval));
 /*  
 	Rf_protect(bartpival = AS_NUMERIC(bartpival));
 	Rf_protect(lawhotval = AS_NUMERIC(lawhotval));
@@ -56,7 +56,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	Rf_protect(maxaperr = AS_NUMERIC(maxaperr));
 */	
 //	double wilksval1 = NUMERIC_POINTER(wilksval)[0];
-	double wilksval1 =  NUMERIC_POINTER(wilksval)[0];
+	double wilksval1 =  REAL(wilksval)[0];
 	/*	
 	double bartpival1 = NUMERIC_POINTER(bartpival)[0];
 	double lawhotval1 = NUMERIC_POINTER(lawhotval)[0];
@@ -141,7 +141,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 
 //	UNPROTECT(8);
 //	UNPROTECT(24);
-	UNPROTECT(8);
+	UNPROTECT(9);
 	
   	return(ans);
 }
