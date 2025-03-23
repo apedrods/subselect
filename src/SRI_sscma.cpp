@@ -46,15 +46,17 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	int checkcolinearity = INTEGER(onlyforward)[0];  
 	/*	
 	int checkcolinearity = INTEGER_POINTER(onlyforward)[0];  
-	
+*/	
   Rf_protect(wilksval = AS_NUMERIC(wilksval));
+/*  
 	Rf_protect(bartpival = AS_NUMERIC(bartpival));
 	Rf_protect(lawhotval = AS_NUMERIC(lawhotval));
 	Rf_protect(ccr12val = AS_NUMERIC(ccr12val));
 	Rf_protect(timelimit = AS_NUMERIC(timelimit));
 	Rf_protect(maxaperr = AS_NUMERIC(maxaperr));
-	
+*/	
 	double wilksval1 = NUMERIC_POINTER(wilksval)[0];
+/*	
 	double bartpival1 = NUMERIC_POINTER(bartpival)[0];
 	double lawhotval1 = NUMERIC_POINTER(lawhotval)[0];
 	double ccr12val1 = NUMERIC_POINTER(ccr12val)[0];
@@ -85,7 +87,8 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	int retcode = extendedleaps::callsscma(
 	  REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
 	  REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
-//	  wilksval1,bartpival1,lawhotval1,ccr12val1,
+	  wilksval1,
+//    bartpival1,lawhotval1,ccr12val1,
 	  r1,kmin1,kmax1,nsol1,
 	/*  
 	  INTEGER(exclude),INTEGER(include),nexclude1,ninclude1,
@@ -137,7 +140,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 
 //	UNPROTECT(8);
 //	UNPROTECT(24);
-	UNPROTECT(8);
+	UNPROTECT(9);
 	
   	return(ans);
 }
