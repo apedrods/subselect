@@ -23,7 +23,8 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	int checkcolinearity = INTEGER(onlyforward)[0];  
 	
 //	double wilksval1 = REAL(wilksval)[0];
-	double wilksval1 = REAL_VALUE(wilksval);
+  Rf_protect(wilksval = AS_NUMERIC(wilksval));
+	double wilksval1 = NUMERIC_VALUE(wilksval);
 	
 	if (!checkcolinearity) ErrMReals::errmonitreal<double>::dropec = true;   
 	else ErrMReals::errmonitreal<double>::dropec = false;   
@@ -93,8 +94,9 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   	SET_VECTOR_ELT(ans, 4, Rf_ScalarInteger(optimal));
   	SET_VECTOR_ELT(ans, 5, Rf_ScalarInteger(nomemory));
 
-	UNPROTECT(8);
-  	
+//	UNPROTECT(8);
+	UNPROTECT(9);
+	
   	return(ans);
 }
 
