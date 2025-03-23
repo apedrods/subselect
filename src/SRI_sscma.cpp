@@ -56,7 +56,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	Rf_protect(maxaperr = AS_NUMERIC(maxaperr));
 */	
 //	double wilksval1 = NUMERIC_POINTER(wilksval)[0];
-	double wilksval1 = AS_NUMERIC(wilksval)[0];
+	double wilksval1 =  NUMERIC_POINTER(wilksval)[0];
 	/*	
 	double bartpival1 = NUMERIC_POINTER(bartpival)[0];
 	double lawhotval1 = NUMERIC_POINTER(lawhotval)[0];
