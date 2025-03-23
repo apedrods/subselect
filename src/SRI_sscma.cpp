@@ -94,7 +94,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 */	 
 //    INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
 //    false);
-   INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets))
+   INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets));
 
 //  int retcode = 0;
 
