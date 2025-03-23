@@ -249,14 +249,14 @@ bool Rev_Leaps_Search(vind frwind0,vind bckind0,vind fvind,vind lvind,vind nvfrw
 
 //		Get number of variables in the susbset where the current forward pivot will be performed
 		nv = nvfrwd + 1;
-		if ( (maxnvfrd=nvfrwd+frwind0+fvind-i) > maxdim) maxnvfrd = maxdim;
+		if ( (maxnvfrd=nvfrwd+frwind0+fvind-i) > maxdim) { maxnvfrd = maxdim; }
 		if (maxnvfrd >= mindim && minnvfrd <= maxdim)
-
+		{ 
 //			Make a forward pivot 				
 			if (minnvfrd < mindim) pivot(SW,SRC,frwind0,t,nv,u,t,mindim,lvind,false);
 			else if (minnvfrd < maxdim) pivot(SW,SRC,frwind0,t,nv,u,t,minnvfrd,lvind,false);
-				 else pivot(SW,SRC,frwind0,0,nv,u,t,minnvfrd,lvind,false);
-
+				  else pivot(SW,SRC,frwind0,0,nv,u,t,minnvfrd,lvind,false);
+		}
 //		Get number of variables in the susbset where the current backward pivot will be performed
 		nv = maxnvbkrd = nvbckwrd-1+fvind-u;
 		if (maxnvbkrd >= mindim && minnvbkrd <= maxdim) {
