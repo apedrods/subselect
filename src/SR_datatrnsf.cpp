@@ -84,9 +84,10 @@ int callsscma(double* S,double* S2,double* Si,double* Segval,double* Segvct,
    /* const char* cmpcr, */ 
 //   int fixed,int* pcind,int nind,int nvar,double timelimit,			
 //   double ntol,bool onlyforward,
-   int* subs,double* subsv,double* bestsv,int* bests,
+//   int* subs,double* subsv,double* bestsv,int* bests,
 //   bool printmsg=true)		
-     
+    int* subs,double* subsv,double* bestsv,int* bests)
+
   
 {
 /*  
