@@ -24,8 +24,8 @@ int callsscma(double *S,double *S2,double *Si,double *Segval,double *Segvct,
 
 int callsscma(double *S,double *S2,double *Si,double *Segval,double *Segvct,
               double *E,double *Ei,double *Hegvct,double *HegvctTinv,double *HegvctEinv,
-              double wilksval,double bartpival,double lawhotval,double ccr12val,int r,
-              int kmin,int kmax,int nsol,
+//              double wilksval,double bartpival,double lawhotval,double ccr12val,
+              int r, int kmin,int kmax,int nsol,
 //              int *out,int *in,int nout,int nin,
               /* const char *cmpcr, */ 
 //              int fixed,int *pcind,int nind,int nvar,double timelimit,
