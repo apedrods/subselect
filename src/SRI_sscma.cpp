@@ -41,7 +41,9 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	int fixed1 = INTEGER_POINTER(fixed)[0]; 
 	int nbindices1 = INTEGER_POINTER(nbindices)[0]; 
 	int dim1 = INTEGER_POINTER(dim)[0]; 
+*/ 
 	int klength = kmax1 - kmin1 + 1;
+/*	
 	int checkcolinearity = INTEGER_POINTER(onlyforward)[0];  
 */	
   Rf_protect(wilksval = AS_NUMERIC(wilksval));
