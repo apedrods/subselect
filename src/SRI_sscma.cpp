@@ -52,7 +52,10 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	double ccr12val1 = REAL(ccr12val)[0];
 	double timelimit1 = REAL(timelimit)[0];
 	double maxaperr1 = REAL(maxaperr)[0];
-	
+
+	Rf_protect(criterion = AS_CHARACTER(criterion));
+	const char* criterion1 = CHAR(STRING_ELT(criterion,0));
+		
 	if (!checkcolinearity) ErrMReals::errmonitreal<double>::dropec = true;   
 	else ErrMReals::errmonitreal<double>::dropec = false;   
 
@@ -80,8 +83,9 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	  wilksval1,bartpival1,lawhotval1,ccr12val1,
 	  r1,kmin1,kmax1,nsol1,
 	  INTEGER(exclude),INTEGER(include),nexclude1,ninclude1,
-	  /* CHAR(STRING_ELT(criterion,0)), */ fixed1,INTEGER(pcindices),nbindices1,
-    dim1,timelimit1,maxaperr1,checkcolinearity,
+//	  /* CHAR(STRING_ELT(criterion,0)), */ fixed1,INTEGER(pcindices),nbindices1,
+    criterion1,fixed1,INTEGER(pcindices),nbindices1,
+	  dim1,timelimit1,maxaperr1,checkcolinearity,
 	  INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
 	  false);
 
@@ -123,8 +127,9 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   SET_VECTOR_ELT(ans, 4, Rf_ScalarInteger(optimal));
   SET_VECTOR_ELT(ans, 5, Rf_ScalarInteger(nomemory));
 
-	UNPROTECT(24);
-
+//	UNPROTECT(24);
+	UNPROTECT(25);
+	
   return(ans);
 }
 
