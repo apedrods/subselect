@@ -80,7 +80,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	  wilksval1,bartpival1,lawhotval1,ccr12val1,
 	  r1,kmin1,kmax1,nsol1,
 	  INTEGER(exclude),INTEGER(include),nexclude1,ninclude1,
-	  CHAR(STRING_ELT(criterion,0)),fixed1,INTEGER(pcindices),nbindices1,
+	  /* CHAR(STRING_ELT(criterion,0)), */ fixed1,INTEGER(pcindices),nbindices1,
     dim1,timelimit1,maxaperr1,checkcolinearity,
 	  INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
 	  false);
