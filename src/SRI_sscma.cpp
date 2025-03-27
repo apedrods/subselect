@@ -140,9 +140,8 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
    SET_VECTOR_ELT(ans, 5, Rf_ScalarInteger(nomemory));
 
 //	UNPROTECT(8);
-//	UNPROTECT(24);
-	UNPROTECT(9);
-	
+	  UNPROTECT(24);
+
   	return(ans);
 }
 
