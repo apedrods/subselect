@@ -27,31 +27,18 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   Rf_protect(onlyforward = AS_INTEGER(onlyforward));
   
 	bool optimal,nomemory;
-//	int r1 = INTEGER_POINTER(r)[0]; 
-//	int kmin1 = INTEGER_POINTER(kmin)[0]; 
-//	int kmax1 = INTEGER_POINTER(kmax)[0]; 
-//	int nsol1 = INTEGER_POINTER(nsol)[0]; 
 	int r1 = INTEGER(r)[0]; 
 	int kmin1 = INTEGER(kmin)[0]; 
 	int kmax1 = INTEGER(kmax)[0]; 
 	int nsol1 = INTEGER(nsol)[0];
-/*	
-	int nexclude1 = INTEGER_POINTER(nexclude)[0]; 
-	int ninclude1 = INTEGER_POINTER(ninclude)[0]; 
-  int fixed1 = INTEGER_POINTER(fixed)[0]; 
-	int nbindices1 = INTEGER_POINTER(nbindices)[0]; 
-	int dim1 = INTEGER_POINTER(dim)[0]; 
-*/ 
-   int nexclude1 = INTEGER(nexclude)[0]; 
-   int ninclude1 = INTEGER(ninclude)[0]; 
-   int fixed1 = INTEGER(fixed)[0]; 
-   int nbindices1 = INTEGER(nbindices)[0]; 
-   int dim1 = INTEGER(dim)[0]; 
-   int klength = kmax1 - kmin1 + 1;
-	 int checkcolinearity = INTEGER(onlyforward)[0];  
-	/*	
-	int checkcolinearity = INTEGER_POINTER(onlyforward)[0];  
-*/	
+  int nexclude1 = INTEGER(nexclude)[0]; 
+  int ninclude1 = INTEGER(ninclude)[0]; 
+  int fixed1 = INTEGER(fixed)[0]; 
+  int nbindices1 = INTEGER(nbindices)[0]; 
+  int dim1 = INTEGER(dim)[0]; 
+  int klength = kmax1 - kmin1 + 1;
+	int checkcolinearity = INTEGER(onlyforward)[0];  
+	
   Rf_protect(wilksval = AS_NUMERIC(wilksval));
 	Rf_protect(bartpival = AS_NUMERIC(bartpival));
 	Rf_protect(lawhotval = AS_NUMERIC(lawhotval));
@@ -59,7 +46,6 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	Rf_protect(timelimit = AS_NUMERIC(timelimit));
 	Rf_protect(maxaperr = AS_NUMERIC(maxaperr));
 	
-//	double wilksval1 = NUMERIC_POINTER(wilksval)[0];
 	double wilksval1 =  REAL(wilksval)[0];
 	double bartpival1 = REAL(bartpival)[0];
 	double lawhotval1 = REAL(lawhotval)[0];
@@ -70,10 +56,10 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	if (!checkcolinearity) ErrMReals::errmonitreal<double>::dropec = true;   
 	else ErrMReals::errmonitreal<double>::dropec = false;   
 
-   	Rf_protect(subsets = Rf_allocVector(INTSXP,nsol1*kmax1*klength));
-   	Rf_protect(values = Rf_allocVector(REALSXP,nsol1*klength));
-   	Rf_protect(bestsets = Rf_allocVector(INTSXP,kmax1*klength));
-   	Rf_protect(bestvalues = Rf_allocVector(REALSXP,klength));
+  Rf_protect(subsets = Rf_allocVector(INTSXP,nsol1*kmax1*klength));
+  Rf_protect(values = Rf_allocVector(REALSXP,nsol1*klength));
+  Rf_protect(bestsets = Rf_allocVector(INTSXP,kmax1*klength));
+  Rf_protect(bestvalues = Rf_allocVector(REALSXP,klength));
 /*
 	int retcode = extendedleaps::callsscma(
 		REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
@@ -94,12 +80,11 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	  wilksval1,bartpival1,lawhotval1,ccr12val1,
 	  r1,kmin1,kmax1,nsol1,
 	  INTEGER(exclude),INTEGER(include),nexclude1,ninclude1,
-    fixed1,INTEGER(pcindices),nbindices1,
+	  CHAR(STRING_ELT(criterion,0)),fixed1,INTEGER(pcindices),nbindices1,
     dim1,timelimit1,maxaperr1,checkcolinearity,
 	  INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
 	  false);
-//	INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets));
-	
+
 //  int retcode = 0;
 
 	if (retcode == 4) nomemory = true;
@@ -123,26 +108,24 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   INTEGER(dimsub)[2] = klength;
   SET_DIM(subsets,dimsub); 
 
-   INTEGER(dimval)[0] = nsol1;
-   INTEGER(dimval)[1] = klength;
-   SET_DIM(values,dimval); 
+  INTEGER(dimval)[0] = nsol1;
+  INTEGER(dimval)[1] = klength;
+  SET_DIM(values,dimval); 
   	
-   INTEGER(dimbsets)[0] = klength;
-   INTEGER(dimbsets)[1] = kmax1; 
-   SET_DIM(bestsets,dimbsets); 
+  INTEGER(dimbsets)[0] = klength;
+  INTEGER(dimbsets)[1] = kmax1; 
+  SET_DIM(bestsets,dimbsets); 
 
+ 	SET_VECTOR_ELT(ans, 0, subsets);
+  SET_VECTOR_ELT(ans, 1, values);
+  SET_VECTOR_ELT(ans, 2, bestvalues);
+  SET_VECTOR_ELT(ans, 3, bestsets);
+  SET_VECTOR_ELT(ans, 4, Rf_ScalarInteger(optimal));
+  SET_VECTOR_ELT(ans, 5, Rf_ScalarInteger(nomemory));
 
- 	 SET_VECTOR_ELT(ans, 0, subsets);
-   SET_VECTOR_ELT(ans, 1, values);
-   SET_VECTOR_ELT(ans, 2, bestvalues);
-   SET_VECTOR_ELT(ans, 3, bestsets);
-   SET_VECTOR_ELT(ans, 4, Rf_ScalarInteger(optimal));
-   SET_VECTOR_ELT(ans, 5, Rf_ScalarInteger(nomemory));
+	UNPROTECT(24);
 
-//	UNPROTECT(8);
-	  UNPROTECT(24);
-
-  	return(ans);
+  return(ans);
 }
 
 

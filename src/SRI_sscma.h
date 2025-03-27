@@ -12,7 +12,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	SEXP dim,SEXP timelimit,SEXP ntol,SEXP onlyforward);
 
 namespace extendedleaps {
-/*		
+		
 int callsscma(double *S,double *S2,double *Si,double *Segval,double *Segvct,
 	double *E,double *Ei,double *Hegvct,double *HegvctTinv,double *HegvctEinv,
 	double wilksval,double bartpival,double lawhotval,double ccr12val,int r,
@@ -20,8 +20,8 @@ int callsscma(double *S,double *S2,double *Si,double *Segval,double *Segvct,
 	const char *cmpcr, int fixed,int *pcind,int nind,int nvar,double timelimit,
 	double ntol,bool onlyforward,int *subs,double *subsv,double *bestsv,int *bests,
 	bool printmsg);
-*/
 
+/*
 int callsscma(double *S,double *S2,double *Si,double *Segval,double *Segvct,
               double *E,double *Ei,double *Hegvct,double *HegvctTinv,double *HegvctEinv,
               double wilksval,double bartpival,double lawhotval,double ccr12val,
@@ -32,5 +32,6 @@ int callsscma(double *S,double *S2,double *Si,double *Segval,double *Segvct,
               double ntol,bool onlyforward,
               int *subs,double *subsv,double *bestsv,int *bests,
               bool printmsg);
+*/              
 }
 
