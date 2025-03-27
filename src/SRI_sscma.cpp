@@ -14,7 +14,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 {
 //	SEXP subsets,values,bestsets,bestvalues,dimsub,dimval,dimbsets,ans,ans_names;
   SEXP subsets,values,bestsets,bestvalues,dimsub,dimval,dimbsets,ans;
-/*  
+  
   Rf_protect(r = AS_INTEGER(r));
   Rf_protect(kmin = AS_INTEGER(kmin));
   Rf_protect(kmax = AS_INTEGER(kmax));
@@ -25,7 +25,7 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   Rf_protect(nbindices = AS_INTEGER(nbindices));
   Rf_protect(dim = AS_INTEGER(dim));
   Rf_protect(onlyforward = AS_INTEGER(onlyforward));
-*/  
+  
 	bool optimal,nomemory;
 //	int r1 = INTEGER_POINTER(r)[0]; 
 //	int kmin1 = INTEGER_POINTER(kmin)[0]; 
@@ -38,32 +38,35 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 /*	
 	int nexclude1 = INTEGER_POINTER(nexclude)[0]; 
 	int ninclude1 = INTEGER_POINTER(ninclude)[0]; 
-	int fixed1 = INTEGER_POINTER(fixed)[0]; 
+  int fixed1 = INTEGER_POINTER(fixed)[0]; 
 	int nbindices1 = INTEGER_POINTER(nbindices)[0]; 
 	int dim1 = INTEGER_POINTER(dim)[0]; 
 */ 
-	int klength = kmax1 - kmin1 + 1;
-	int checkcolinearity = INTEGER(onlyforward)[0];  
+   int nexclude1 = INTEGER(nexclude)[0]; 
+   int ninclude1 = INTEGER(ninclude)[0]; 
+   int fixed1 = INTEGER(fixed)[0]; 
+   int nbindices1 = INTEGER(nbindices)[0]; 
+   int dim1 = INTEGER(dim)[0]; 
+   int klength = kmax1 - kmin1 + 1;
+	 int checkcolinearity = INTEGER(onlyforward)[0];  
 	/*	
 	int checkcolinearity = INTEGER_POINTER(onlyforward)[0];  
 */	
   Rf_protect(wilksval = AS_NUMERIC(wilksval));
-/*  
 	Rf_protect(bartpival = AS_NUMERIC(bartpival));
 	Rf_protect(lawhotval = AS_NUMERIC(lawhotval));
 	Rf_protect(ccr12val = AS_NUMERIC(ccr12val));
 	Rf_protect(timelimit = AS_NUMERIC(timelimit));
 	Rf_protect(maxaperr = AS_NUMERIC(maxaperr));
-*/	
+	
 //	double wilksval1 = NUMERIC_POINTER(wilksval)[0];
 	double wilksval1 =  REAL(wilksval)[0];
-	/*	
-	double bartpival1 = NUMERIC_POINTER(bartpival)[0];
-	double lawhotval1 = NUMERIC_POINTER(lawhotval)[0];
-	double ccr12val1 = NUMERIC_POINTER(ccr12val)[0];
-	double timelimit1 = NUMERIC_POINTER(timelimit)[0];
-	double maxaperr1 = NUMERIC_POINTER(maxaperr)[0];
-*/	
+	double bartpival1 = REAL(bartpival)[0];
+	double lawhotval1 = REAL(lawhotval)[0];
+	double ccr12val1 = REAL(ccr12val)[0];
+	double timelimit1 = REAL(timelimit)[0];
+	double maxaperr1 = REAL(maxaperr)[0];
+	
 	if (!checkcolinearity) ErrMReals::errmonitreal<double>::dropec = true;   
 	else ErrMReals::errmonitreal<double>::dropec = false;   
 
@@ -88,18 +91,15 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	int retcode = extendedleaps::callsscma(
 	  REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
 	  REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
-	  wilksval1,
-//    bartpival1,lawhotval1,ccr12val1,
+	  wilksval1,bartpival1,lawhotval1,ccr12val1,
 	  r1,kmin1,kmax1,nsol1,
-	/*  
 	  INTEGER(exclude),INTEGER(include),nexclude1,ninclude1,
     fixed1,INTEGER(pcindices),nbindices1,
     dim1,timelimit1,maxaperr1,checkcolinearity,
-*/	 
-//    INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
-//    false);
-   INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets));
-
+	  INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
+	  false);
+//	INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets));
+	
 //  int retcode = 0;
 
 	if (retcode == 4) nomemory = true;
