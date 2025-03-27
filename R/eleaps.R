@@ -139,8 +139,7 @@ eleaps<-function(mat,kmin=length(include)+1,kmax=ncol(mat)-length(exclude)-1,nso
            as.double(Hegvct),
            as.double(HegvctTinv),
            as.double(HegvctEinv),
-#           as.double(Wilksval),	
-           as.numeric(Wilksval),	
+           as.double(Wilksval),	
            as.double(BartPival),
            as.double(LawHotval),
            as.double(CCR12val),
@@ -163,7 +162,6 @@ eleaps<-function(mat,kmin=length(include)+1,kmax=ncol(mat)-length(exclude)-1,nso
            PACKAGE="subselect"   
         ) 
 	names(Cout) <- c("subsets","values","bestvalues","bestsets","found","nomemory")
-cat("Cout =\n") ; print(Cout)	
 	if (Cout$nomemory == TRUE) return(NULL)
 
 #######################################

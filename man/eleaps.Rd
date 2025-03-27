@@ -216,7 +216,7 @@ Regression Models, \emph{Biometrics}, Vol. 34, 318-327.
 ##
 
 data(swiss)
-#eleaps(cor(swiss),nsol=3, criterion="RM")
+eleaps(cor(swiss),nsol=3, criterion="RM")
 
 ##$subsets
 ##, , Card.1
@@ -285,7 +285,7 @@ data(swiss)
 ## 
 
 data(swiss)
-#eleaps(cor(swiss),2,3,exclude=6,nsol=3,criterion="rm")
+eleaps(cor(swiss),2,3,exclude=6,nsol=3,criterion="rm")
 
 ##$subsets
 ##, , Card.2

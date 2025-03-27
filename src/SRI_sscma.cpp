@@ -12,7 +12,6 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
 	SEXP criterion,SEXP fixed,SEXP pcindices,SEXP nbindices,
 	SEXP dim,SEXP timelimit,SEXP maxaperr,SEXP onlyforward)
 {
-//	SEXP subsets,values,bestsets,bestvalues,dimsub,dimval,dimbsets,ans,ans_names;
   SEXP subsets,values,bestsets,bestvalues,dimsub,dimval,dimbsets,ans;
   
   Rf_protect(r = AS_INTEGER(r));
@@ -63,33 +62,17 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   Rf_protect(values = Rf_allocVector(REALSXP,nsol1*klength));
   Rf_protect(bestsets = Rf_allocVector(INTSXP,kmax1*klength));
   Rf_protect(bestvalues = Rf_allocVector(REALSXP,klength));
-/*
-	int retcode = extendedleaps::callsscma(
-		REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
-		REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
-		REAL(wilksval)[0],REAL(bartpival)[0],REAL(lawhotval)[0],REAL(ccr12val)[0],
-		INTEGER(r)[0],kmin1,kmax1,nsol1,
-		INTEGER(exclude),INTEGER(include),INTEGER(nexclude)[0],INTEGER(ninclude)[0],
-    CHAR(STRING_ELT(criterion,0)), INTEGER(fixed)[0],INTEGER(pcindices),INTEGER(nbindices)[0],
-		dim1,REAL(timelimit)[0],REAL(maxaperr)[0],checkcolinearity,
-		INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
-		false
-	);
-*/
-	
+
 	int retcode = extendedleaps::callsscma(
 	  REAL(S),REAL(S2),REAL(Si),REAL(Segval),REAL(Segvct),
 	  REAL(E),REAL(Ei),REAL(Hegvct),REAL(HegvctTinv),REAL(HegvctEinv),
 	  wilksval1,bartpival1,lawhotval1,ccr12val1,
 	  r1,kmin1,kmax1,nsol1,
 	  INTEGER(exclude),INTEGER(include),nexclude1,ninclude1,
-//	  /* CHAR(STRING_ELT(criterion,0)), */ fixed1,INTEGER(pcindices),nbindices1,
     criterion1,fixed1,INTEGER(pcindices),nbindices1,
 	  dim1,timelimit1,maxaperr1,checkcolinearity,
 	  INTEGER(subsets),REAL(values),REAL(bestvalues),INTEGER(bestsets),
 	  false);
-
-//  int retcode = 0;
 
 	if (retcode == 4) nomemory = true;
 	else nomemory = false;
@@ -127,7 +110,6 @@ SEXP eleaps(SEXP S,SEXP S2,SEXP Si,SEXP Segval,SEXP Segvct,
   SET_VECTOR_ELT(ans, 4, Rf_ScalarInteger(optimal));
   SET_VECTOR_ELT(ans, 5, Rf_ScalarInteger(nomemory));
 
-//	UNPROTECT(24);
 	UNPROTECT(25);
 	
   return(ans);
