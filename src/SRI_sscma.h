@@ -28,6 +28,7 @@ int callsscma(double *S,double *S2,double *Si,double *Segval,double *Segvct,
               int r, int kmin,int kmax,int nsol,
               int *out,int *in,int nout,int nin,
               /* const char *cmpcr, */ 
+/*              
               int fixed,int *pcind,int nind,int nvar,double timelimit,
               double ntol,bool onlyforward,
               int *subs,double *subsv,double *bestsv,int *bests,
